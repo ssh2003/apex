@@ -87,7 +87,6 @@ func (b *Bootstrapper) Boot() error {
 	if b.isProject() {
 			help("I've detected a ./project.json file, this seems to already be a project!")
 			return nil
-		}
 
 	}
 
