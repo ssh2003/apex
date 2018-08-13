@@ -113,6 +113,7 @@ func (b *Bootstrapper) isProject() bool {
 func (b *Bootstrapper) isUpdate() bool {
 	fmt.Println("isUpdate")
 	fmt.Println(reflect.TypeOf(os.Args))
+	fmt.Println(LastIndexAny(os.Args, "update"))
 	//if indexOf(os.Args, "update") > -1 {
 	//	return true
 	//} else {
