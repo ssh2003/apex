@@ -110,12 +110,12 @@ func (b *Bootstrapper) ReadProjectFile() error {
 	jsonFile, err := os.Open("project.json")
 	// if we os.Open returns an error then handle it
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 	fmt.Println("Successfully Opened users.json")
 	// defer the closing of our jsonFile so that we can parse it later on
 	defer jsonFile.Close()
-
+	return nil
 }
 
 // check if there's a project.
