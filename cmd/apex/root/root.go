@@ -48,8 +48,8 @@ var Project *project.Project
 // Config for AWS.
 var Config *aws.Config
 
-// Update role flag
-var update bool
+// Role name
+var rolename string
 
 // Register `cmd`.
 func Register(cmd *cobra.Command) {
@@ -76,7 +76,7 @@ func init() {
 	f.StringVarP(&iamrole, "iamrole", "i", "", "AWS iamrole")
 	f.StringVarP(&region, "region", "r", "", "AWS region")
 	f.StringVar(&endpoint, "endpoint", "", "AWS endpoint")
-	f.BoolVarP(&update, "update", "u", false, "Update role")
+	f.StringVarP(&rolename, "rolename", "R", "", "Add rolename")
 }
 
 // PreRunNoop noop for other commands.
