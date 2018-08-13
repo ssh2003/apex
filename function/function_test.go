@@ -19,9 +19,9 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/apex/apex/function"
-	"github.com/apex/apex/mock"
-	"github.com/apex/apex/utils"
+	"github.com/ssh2003/apex/function"
+	"github.com/ssh2003/apex/mock"
+	"github.com/ssh2003/apex/utils"
 )
 
 func init() {

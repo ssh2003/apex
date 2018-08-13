@@ -6,11 +6,11 @@ import (
 
 	"github.com/tj/cobra"
 
-	"github.com/apex/apex/cmd/apex/root"
+	"github.com/ssh2003/apex/cmd/apex/root"
 )
 
 // Version of program.
-const Version = "1.0.0-rc2"
+const Version = "1.0.0-ssh2003-alpha"
 
 // Command config.
 var Command = &cobra.Command{

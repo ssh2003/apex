@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/apex/apex/archive"
-	"github.com/apex/apex/function"
+	"github.com/ssh2003/apex/archive"
+	"github.com/ssh2003/apex/function"
 	"github.com/pkg/errors"
 )
 
