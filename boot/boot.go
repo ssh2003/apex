@@ -118,7 +118,7 @@ func (b *Bootstrapper) isUpdate() bool {
 	fmt.Println(os.Args[0])
 	newString = strings.Join(os.Args, " ")
 	fmt.Println(newString)
-	fmt.Println(strings.LastIndex(os.Args[0], "update"))
+	fmt.Println(newString, "update"))
 	//if indexOf(os.Args, "update") > -1 {
 	//	return true
 	//} else {
