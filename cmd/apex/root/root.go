@@ -48,6 +48,9 @@ var Project *project.Project
 // Config for AWS.
 var Config *aws.Config
 
+// Update role flag
+var update bool
+
 // Register `cmd`.
 func Register(cmd *cobra.Command) {
 	Command.AddCommand(cmd)
