@@ -83,6 +83,7 @@ func (b *Bootstrapper) Boot() error {
 	fmt.Println(logo)
 
 	if b.isProject() {
+		b.isUpdate()
 		help("I've detected a ./project.json file, this seems to already be a project!")
 		return nil
 	}
@@ -100,6 +101,13 @@ func (b *Bootstrapper) Boot() error {
 // check if there's a project.
 func (b *Bootstrapper) isProject() bool {
 	_, err := os.Stat("project.json")
+	return err == nil
+}
+
+// if update flag we will create role and exit
+func (b *Bootstrapper) isUpdate() bool {
+	fmt.Println("isUpdate")
+	fmt.Println(os.Args)
 	return err == nil
 }
 
