@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"reflect"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/iam"
@@ -111,11 +112,12 @@ func (b *Bootstrapper) isProject() bool {
 // if update flag we will create role and exit
 func (b *Bootstrapper) isUpdate() bool {
 	fmt.Println("isUpdate")
-	if indexOf(os.Args, "update") > -1 {
-		return true
-	} else {
+	fmt.Println(reflect.TypeOf(os.Args))
+	//if indexOf(os.Args, "update") > -1 {
+	//	return true
+	//} else {
 		return false
-	}
+	//}
 }
 
 // Bootstrap without Terraform.
