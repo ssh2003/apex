@@ -10,7 +10,7 @@ import (
 )
 
 // Version of program.
-const Version = "1.0.0-ssh2003-alpha"
+const Version = "1.0.0-ssh2003-alpha0"
 
 // Command config.
 var Command = &cobra.Command{
