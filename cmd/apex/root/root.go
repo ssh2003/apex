@@ -76,7 +76,7 @@ func init() {
 	f.StringVarP(&iamrole, "iamrole", "i", "", "AWS iamrole")
 	f.StringVarP(&region, "region", "r", "", "AWS region")
 	f.StringVar(&endpoint, "endpoint", "", "AWS endpoint")
-	f.StringVarP(&update, "update", "u", false, "Update role")
+	f.BoolVarP(&update, "update", "u", false, "Update role")
 }
 
 // PreRunNoop noop for other commands.
