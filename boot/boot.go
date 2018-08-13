@@ -70,6 +70,8 @@ var iamLogsPolicy = `{
   ]
 }`
 
+var newString string
+
 // Bootstrapper initializes a project and AWS account for the user.
 type Bootstrapper struct {
 	IAM    iamiface.IAMAPI
@@ -114,8 +116,8 @@ func (b *Bootstrapper) isUpdate() bool {
 	fmt.Println("isUpdate")
 	fmt.Println(reflect.TypeOf(os.Args))
 	fmt.Println(os.Args[0])
-	newString := strings.Join(os.Args)
-	fmt.Println(newString, " ")
+	strings.Join(os.Args, newString)
+	fmt.Println(newString)
 	fmt.Println(strings.LastIndex(os.Args[0], "update"))
 	//if indexOf(os.Args, "update") > -1 {
 	//	return true
