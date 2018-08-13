@@ -8,7 +8,7 @@ import (
 	"github.com/tj/go-progress"
 	"github.com/tj/go/term"
 
-	"github.com/apex/util"
+	"github.com/ssh2003/apex/util"
 )
 
 // reader wrapping a progress bar.
