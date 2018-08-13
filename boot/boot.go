@@ -88,7 +88,7 @@ func (b *Bootstrapper) Boot() error {
 	if b.isProject() {
 		if b.isUpdate() {
 			fmt.Println("Update flag present, will update role")
-			ReadProjectFile()
+			b.ReadProjectFile()
 		} else {
 			help("I've detected a ./project.json file, this seems to already be a project!")
 			return nil
