@@ -88,11 +88,12 @@ func (b *Bootstrapper) Boot() error {
 	if b.isProject() {
 		if b.isUpdate() {
 			fmt.Println("Update flag present, will update role")
+			ReadProjectFile()
 		} else {
 			help("I've detected a ./project.json file, this seems to already be a project!")
-
+			return nil
 		}
-		return nil
+
 	}
 
 	help("Enter the name of your project. It should be machine-friendly, as this\nis used to prefix your functions in Lambda.")
@@ -103,6 +104,18 @@ func (b *Bootstrapper) Boot() error {
 
 	fmt.Println()
 	return b.bootVanilla()
+}
+
+func (b *Bootstrapper) ReadProjectFile() error {
+	jsonFile, err := os.Open("project.json")
+	// if we os.Open returns an error then handle it
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println("Successfully Opened users.json")
+	// defer the closing of our jsonFile so that we can parse it later on
+	defer jsonFile.Close()
+
 }
 
 // check if there's a project.
