@@ -86,12 +86,6 @@ func (b *Bootstrapper) Boot() error {
 	fmt.Println(logo)
 
 	if b.isProject() {
-		if b.isUpdate() {
-			fmt.Println("Update flag present, will update role")
-			b.ReadProjectFile()
-			
-			return b.bootVanilla()
-		} else {
 			help("I've detected a ./project.json file, this seems to already be a project!")
 			return nil
 		}
@@ -108,37 +102,10 @@ func (b *Bootstrapper) Boot() error {
 	return b.bootVanilla()
 }
 
-func (b *Bootstrapper) ReadProjectFile() error {
-	jsonFile, err := os.Open("project.json")
-	// if we os.Open returns an error then handle it
-	if err != nil {
-		return err
-	}
-	fmt.Println("Successfully Opened users.json")
-	// defer the closing of our jsonFile so that we can parse it later on
-	defer jsonFile.Close()
-	return nil
-}
-
 // check if there's a project.
 func (b *Bootstrapper) isProject() bool {
 	_, err := os.Stat("project.json")
 	return err == nil
-}
-
-// if update flag we will create role and exit
-func (b *Bootstrapper) isUpdate() bool {
-	fmt.Println("isUpdate")
-	fmt.Println(reflect.TypeOf(os.Args))
-	fmt.Println(os.Args[0])
-	newString = strings.Join(os.Args, " ")
-	fmt.Println(newString)
-	fmt.Println(strings.LastIndex(newString, "update"))
-	if strings.LastIndex(newString, "update") > -1 {
-		return true
-	} else {
-		return false
-	}
 }
 
 // Bootstrap without Terraform.
