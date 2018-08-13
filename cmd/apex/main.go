@@ -25,6 +25,7 @@ import (
 	_ "github.com/ssh2003/apex/cmd/apex/rollback"
 	_ "github.com/ssh2003/apex/cmd/apex/upgrade"
 	_ "github.com/ssh2003/apex/cmd/apex/version"
+	_ "github.com/ssh2003/apex/cmd/apex/createrole"
 
 	// plugins
 	_ "github.com/ssh2003/apex/plugins/clojure"
