@@ -70,7 +70,6 @@ var iamLogsPolicy = `{
   ]
 }`
 
-var newString string
 
 // Bootstrapper initializes a project and AWS account for the user.
 type Bootstrapper struct {
