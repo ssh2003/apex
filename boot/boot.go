@@ -83,8 +83,12 @@ func (b *Bootstrapper) Boot() error {
 	fmt.Println(logo)
 
 	if b.isProject() {
-		b.isUpdate()
-		help("I've detected a ./project.json file, this seems to already be a project!")
+		if b.isUpdate() {
+			fmt.Println("Update flag present, will update role")
+		} else {
+			help("I've detected a ./project.json file, this seems to already be a project!")
+
+		}
 		return nil
 	}
 
@@ -107,8 +111,11 @@ func (b *Bootstrapper) isProject() bool {
 // if update flag we will create role and exit
 func (b *Bootstrapper) isUpdate() bool {
 	fmt.Println("isUpdate")
-	fmt.Println(os.Args)
-	return true
+	if indexOf(os.Args, "update") > -1 {
+		return true
+	} else {
+		return false
+	}
 }
 
 // Bootstrap without Terraform.
