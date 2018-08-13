@@ -9,8 +9,8 @@ import (
 	"github.com/tj/go-update/stores/github"
 	"github.com/tj/go/term"
 
-	"github.com/apex/apex/internal/progressreader"
-	"github.com/apex/apex/internal/util"
+	progressreader "github.com/ssh2003/apex/vendor/progressreader"
+	util "github.com/ssh2003/apex/vendor/util"
 )
 
 // Upgrade the current `version` of apex to the latest.
