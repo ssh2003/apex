@@ -108,7 +108,7 @@ func (b *Bootstrapper) isProject() bool {
 func (b *Bootstrapper) isUpdate() bool {
 	fmt.Println("isUpdate")
 	fmt.Println(os.Args)
-	return
+	return true
 }
 
 // Bootstrap without Terraform.
