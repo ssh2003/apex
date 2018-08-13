@@ -119,11 +119,11 @@ func (b *Bootstrapper) isUpdate() bool {
 	newString = strings.Join(os.Args, " ")
 	fmt.Println(newString)
 	fmt.Println(strings.LastIndex(newString, "update"))
-	//if indexOf(os.Args, "update") > -1 {
-	//	return true
-	//} else {
+	if strings.LastIndex(newString, "update") > -1 {
+		return true
+	} else {
 		return false
-	//}
+	}
 }
 
 // Bootstrap without Terraform.
