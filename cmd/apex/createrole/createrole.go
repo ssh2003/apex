@@ -38,7 +38,7 @@ var Command = &cobra.Command{
 func init() {
 	root.Register(Command)
 	f := Command.Flags()
-	f.StringVarP(&roleName, "rolename", "R", "", "Set environment variable")
+	f.StringVarP(&roleName, "rolename", "R", "", "Set name of role")
 	fmt.Println(roleName)
 	//fmt.Println(f)
 
