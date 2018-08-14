@@ -44,6 +44,7 @@ func init() {
 	//var tmpRoleNames []string
 	f.StringSliceVarP(&roleName, "rolename", "R", nil, "Role name to create")
 	//roleName = tmpRoleNames[0]
+	fmt.Println(len(roleName))
 	if len(roleName) < 1 {
 		fmt.Println("Need a name of Role")
 		os.Exit(1)
