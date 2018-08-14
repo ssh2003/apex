@@ -7,7 +7,7 @@ import (
 	"github.com/tj/cobra"
 	"github.com/aws/aws-sdk-go/service/iam"
 
-  "github.com/ssh2003/apex/roleinit"
+  "github.com/ssh2003/apex/boot"
 	"github.com/ssh2003/apex/cmd/apex/root"
 
 )
@@ -39,7 +39,7 @@ func init() {
 }
 
 // Run command.
-func run(c *cobra.Command, args []string) error {
+/*func run(c *cobra.Command, args []string) error {
 	if err := root.Prepare(c, args); err != nil {
 		return err
 	}
@@ -55,4 +55,22 @@ func run(c *cobra.Command, args []string) error {
 	}
 	return r.RInit()
 
+}*/
+
+func run(c *cobra.Command, args []string) error {
+	if err := root.Prepare(c, args); err != nil {
+		return err
+	}
+
+	region := root.Config.Region
+	if region == nil {
+		return errors.New(credentialsError)
+	}
+
+	b := boot.Bootstrapper{
+		IAM:    iam.New(root.Session),
+		Region: *region,
+	}
+
+	return b.Boot()
 }
