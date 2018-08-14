@@ -8,6 +8,7 @@ import (
 
 	"github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
+	"fmt"
 )
 
 var credentialsError = `
@@ -39,7 +40,7 @@ func init() {
 	root.Register(Command)
 	f := Command.Flags()
 	f.StringVarP(&rolename, "name", "n", "unknown", "Set name of role")
-	//fmt.Println(roleName)
+	fmt.Println(rolename)
 	//fmt.Println(f)
 
 }
