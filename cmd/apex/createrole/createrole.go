@@ -41,7 +41,7 @@ func init() {
 	root.Register(Command)
 	f := Command.Flags()
 	//var tmpRoleNames []string
-	f.StringSliceVarP(&RoleName, "rolename", "R", nil, "Role name to create")
+	f.StringSliceVarP(&roleName, "rolename", "R", nil, "Role name to create")
 	//roleName = tmpRoleNames[0]
 }
 
