@@ -2,9 +2,10 @@
 package createrole
 
 import (
-	"fmt"
-
+	//"fmt"
+	"errors"
 	"github.com/tj/cobra"
+	"github.com/aws/aws-sdk-go/service/iam"
 
   "github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
@@ -41,6 +42,6 @@ func run(c *cobra.Command, args []string) {
 		IAM:    iam.New(root.Session),
 		Region: *region,
 	}
-	r.RInit()
+	return r.RInit()
 
 }
