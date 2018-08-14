@@ -9,7 +9,6 @@ import (
 
 	"github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
-	"os"
 )
 
 var credentialsError = `
@@ -25,7 +24,7 @@ var credentialsError = `
 
 `
 
-var roleName string
+//var roleName string
 
 // Command config.
 var Command = &cobra.Command{
@@ -39,9 +38,9 @@ var Command = &cobra.Command{
 func init() {
 	root.Register(Command)
 	f := Command.Flags()
-	f.StringVarP(&roleName, "rolename", "R", "", "Set environment variable")
-	fmt.Println(roleName)
-	fmt.Println(os.Args)
+	//f.StringVarP(&roleName, "rolename", "R", "", "Set environment variable")
+	//fmt.Println(roleName)
+	fmt.Println(f)
 
 }
 
