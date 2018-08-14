@@ -24,7 +24,7 @@ var credentialsError = `
 
 `
 
-var roleName []string
+var roleName string
 
 // Command config.
 var Command = &cobra.Command{
@@ -38,7 +38,7 @@ var Command = &cobra.Command{
 func init() {
 	root.Register(Command)
 	f := Command.Flags()
-	f.StringSliceVarP(&roleName, "rolename", "R", nil, "Set environment variable")
+	f.StringVarP(&roleName, "rolename", "R", "", "Set environment variable")
 	fmt.Println(roleName)
 
 }
