@@ -3,7 +3,7 @@ package roleinit
 import (
 	"fmt"
 	//"io/ioutil"
-	//"os"
+	"os"
 	//"strings"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/iam"
@@ -20,6 +20,7 @@ type RoleInit struct {
 
 func (r *RoleInit) RInit() error {
 	fmt.Println("RInit")
+	fmt.Println(os.Args)
 	result, err := r.IAM.ListUsers(&iam.ListUsersInput{
         MaxItems: aws.Int64(10),
     })
