@@ -5,8 +5,8 @@ import (
 	//"io/ioutil"
 	//"os"
 	//"strings"
-	"github.com/aws/aws-sdk-go/aws"
-	//"github.com/aws/aws-sdk-go/service/iam"
+	//"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/aws/aws-sdk-go/service/iam/iamiface"
 )
 
@@ -20,13 +20,19 @@ type RoleInit struct {
 
 func (r *RoleInit) RInit() error {
 	fmt.Println("RInit")
-	role, err := r.IAM.ListUsers(&aws.ListUsersInput{
+	role, err := r.IAM.ListUsers(&iam.ListUsersInput{
         MaxItems: aws.Int64(10),
     })
 	if err != nil {
 	        fmt.Println("Error", err)
-	        return
+	        return err
 	}
+	for i, user := range result.Users {
+        if user == nil {
+            continue
+        }
+        fmt.Printf("%d user %s created %v\n", i, *user.UserName, user.CreateDate)
+  }
 	return nil
 }
 
