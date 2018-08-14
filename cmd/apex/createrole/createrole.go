@@ -7,7 +7,43 @@ import (
 	"github.com/tj/cobra"
 
 	"github.com/ssh2003/apex/cmd/apex/root"
+
+	//"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/iam"
+	//"github.com/aws/aws-sdk-go/service/iam/iamiface"
+
 )
+/*
+var iamAssumeRolePolicy = `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}`
+
+var iamLogsPolicy = `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "logs:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}`
+*/
+
+
+
+
 
 // Command config.
 var Command = &cobra.Command{
@@ -25,4 +61,6 @@ func init() {
 // Run command.
 func run(c *cobra.Command, args []string) {
 	fmt.Println("Create Role")
+	svc := iam.New()
+	fmt.Println(svc)
 }
