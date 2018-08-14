@@ -67,4 +67,4 @@ func (r *RoleInit) RInit() error {
 
 	return *role.Role.Arn, nil
 }
-/*
+*/
