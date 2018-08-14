@@ -11,6 +11,7 @@ import (
 	"github.com/ssh2003/apex/cmd/apex/root"
 
 	"fmt"
+	"os"
 )
 
 var credentialsError = `
@@ -43,6 +44,10 @@ func init() {
 	//var tmpRoleNames []string
 	f.StringSliceVarP(&roleName, "rolename", "R", nil, "Role name to create")
 	//roleName = tmpRoleNames[0]
+	if len(roleName) < 1 {
+		fmt.Println("Need a name of Role")
+		os.Exit(1)
+	}
 }
 
 // Run command.
@@ -50,7 +55,7 @@ func run(c *cobra.Command, args []string) error {
 	if err := root.Prepare(c, args); err != nil {
 		return err
 	}
-	fmt.Println(roleName)
+	fmt.Println(roleName[0])
 
 	region := root.Config.Region
 	if region == nil {
