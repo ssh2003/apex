@@ -39,8 +39,8 @@ func init() {
 	root.Register(Command)
 	f := Command.Flags()
 	f.StringVarP(&roleName, "rolename", "R", "", "Set environment variable")
-	//fmt.Println(roleName)
-	fmt.Println(f)
+	fmt.Println(roleName)
+	//fmt.Println(f)
 
 }
 
