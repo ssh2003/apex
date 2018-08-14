@@ -12,7 +12,18 @@ import (
 
 )
 
+var credentialsError = `
 
+  AWS region missing, are your credentials set up? Try:
+
+  $ export AWS_PROFILE=myapp-stage
+  $ apex init
+
+  Visit http://apex.run/#aws-credentials for more details on
+  setting up AWS credentials and specifying which profile to
+  use.
+
+`
 
 // Command config.
 var Command = &cobra.Command{
