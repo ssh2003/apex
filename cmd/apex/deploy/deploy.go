@@ -90,6 +90,6 @@ func run(c *cobra.Command, args []string) error {
 	for k, v := range vars {
 		root.Project.Setenv(k, v)
 	}
-	fmt.Println(alias)
+	//fmt.Println(alias)
 	return root.Project.DeployAndClean()
 }

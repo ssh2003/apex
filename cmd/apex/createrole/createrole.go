@@ -63,7 +63,7 @@ func run(c *cobra.Command, args []string) error {
 		IAM:    iam.New(root.Session),
 		Region: *region,
 	}
-	return r.RInit()
+	return r.RInit(rolename)
 
 }
 

@@ -17,9 +17,9 @@ type RoleInit struct {
 	description string
 }
 
-func (r *RoleInit) RInit() error {
+func (r *RoleInit) RInit(var rolename string) error {
 	fmt.Println("RInit")
-	//fmt.Println(os.Args)
+	fmt.Println(rolename)
 	result, err := r.IAM.ListUsers(&iam.ListUsersInput{
         MaxItems: aws.Int64(10),
     })
