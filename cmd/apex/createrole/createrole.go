@@ -50,7 +50,9 @@ func run(c *cobra.Command, args []string) error {
 		return err
 	}
 	//fmt.Println(roleName[0])
-
+	f := Command.Flags()
+	f.StringVarP(&roleName, "rolename", "R", "", "Set name of role")
+	fmt.Println(roleName)
 	region := root.Config.Region
 	if region == nil {
 		return errors.New(credentialsError)
