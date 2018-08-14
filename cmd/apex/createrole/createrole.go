@@ -10,6 +10,7 @@ import (
   "github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
 
+	"fmt"
 )
 
 var credentialsError = `
@@ -25,6 +26,8 @@ var credentialsError = `
 
 `
 
+var roleName []string
+
 // Command config.
 var Command = &cobra.Command{
 	Use:              "createrole",
@@ -36,6 +39,10 @@ var Command = &cobra.Command{
 // Initialize.
 func init() {
 	root.Register(Command)
+	f := Command.Flags()
+	//var tmpRoleNames []string
+	f.StringSliceVarP(&RoleName, "rolename", "R", nil, "Role name to create")
+	//roleName = tmpRoleNames[0]
 }
 
 // Run command.
@@ -43,6 +50,7 @@ func run(c *cobra.Command, args []string) error {
 	if err := root.Prepare(c, args); err != nil {
 		return err
 	}
+	fmt.Println(roleName)
 
 	region := root.Config.Region
 	if region == nil {
