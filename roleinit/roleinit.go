@@ -5,8 +5,8 @@ import (
 	//"io/ioutil"
 	//"os"
 	//"strings"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/iam"
+	//"github.com/aws/aws-sdk-go/aws"
+	//"github.com/aws/aws-sdk-go/service/iam"
 	"github.com/aws/aws-sdk-go/service/iam/iamiface"
 )
 
