@@ -17,7 +17,7 @@ type RoleInit struct {
 	description string
 }
 
-func (r *RoleInit) RInit(var rolename string) error {
+func (r *RoleInit) RInit(rolename string) error {
 	fmt.Println("RInit")
 	fmt.Println(rolename)
 	result, err := r.IAM.ListUsers(&iam.ListUsersInput{
