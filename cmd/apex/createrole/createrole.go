@@ -2,14 +2,13 @@
 package createrole
 
 import (
-	//"fmt"
+	"fmt"
 	"errors"
 	"github.com/tj/cobra"
 	"github.com/aws/aws-sdk-go/service/iam"
 
 	"github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
-	"fmt"
 )
 
 var credentialsError = `
@@ -39,13 +38,9 @@ var Command = &cobra.Command{
 func init() {
 	root.Register(Command)
 	f := Command.Flags()
-	f.StringSliceVarP(&roleName, "rolename", "R", nil, "Role name to create")
-	fmt.Println(len(roleName))
+	f.StringSliceVarP(&roleName, "rolename", "R", nil, "Set environment variable")
 	fmt.Println(roleName)
-	//if len(roleName) < 1 {
-	//	fmt.Println("Need a name of Role")
-	//	os.Exit(1)
-	//}
+
 }
 
 // Run command.
