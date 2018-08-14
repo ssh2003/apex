@@ -24,7 +24,7 @@ var credentialsError = `
 
 `
 
-var roleName string
+var rolename string
 
 // Command config.
 var Command = &cobra.Command{
@@ -38,7 +38,7 @@ var Command = &cobra.Command{
 func init() {
 	root.Register(Command)
 	f := Command.Flags()
-	f.StringVarP(&roleName, "rolename", "R", "unknown", "Set name of role")
+	f.StringVarP(&rolename, "name", "n", "unknown", "Set name of role")
 	//fmt.Println(roleName)
 	//fmt.Println(f)
 
@@ -51,7 +51,7 @@ func run(c *cobra.Command, args []string) error {
 	}
 	//fmt.Println(roleName[0])
 
-	fmt.Println(roleName)
+	fmt.Println(rolename)
 	region := root.Config.Region
 	if region == nil {
 		return errors.New(credentialsError)
