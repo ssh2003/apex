@@ -2,7 +2,6 @@
 package createrole
 
 import (
-	"fmt"
 	"errors"
 	"github.com/tj/cobra"
 	"github.com/aws/aws-sdk-go/service/iam"
@@ -51,7 +50,8 @@ func run(c *cobra.Command, args []string) error {
 	}
 	//fmt.Println(roleName[0])
 
-	fmt.Println(rolename)
+	//fmt.Println(rolename)
+
 	region := root.Config.Region
 	if region == nil {
 		return errors.New(credentialsError)
