@@ -49,7 +49,7 @@ func run(c *cobra.Command, args []string) error {
 		return errors.New(credentialsError)
 	}
 
-	r := roleinit.RoleInit{
+	r := roleinit.RoleInit {
 		IAM:    iam.New(root.Session),
 		Region: *region,
 	}
