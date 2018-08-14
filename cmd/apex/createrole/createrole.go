@@ -9,6 +9,7 @@ import (
 
 	"github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
+	"os"
 )
 
 var credentialsError = `
@@ -40,6 +41,7 @@ func init() {
 	f := Command.Flags()
 	f.StringVarP(&roleName, "rolename", "R", "", "Set environment variable")
 	fmt.Println(roleName)
+	fmt.Println(os.Args)
 
 }
 
