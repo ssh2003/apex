@@ -63,7 +63,7 @@ func init() {
 	f.StringVarP(&alias, "alias", "a", "current", "Function alias")
 	f.StringVarP(&zip, "zip", "z", "", "Zip path")
 	f.IntVarP(&concurrency, "concurrency", "c", 5, "Concurrent deploys")
-	fmt.Println(alias)
+
 }
 
 // Run command.
@@ -90,6 +90,6 @@ func run(c *cobra.Command, args []string) error {
 	for k, v := range vars {
 		root.Project.Setenv(k, v)
 	}
-
+	fmt.Println(alias)
 	return root.Project.DeployAndClean()
 }
