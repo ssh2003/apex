@@ -25,6 +25,7 @@ var credentialsError = `
 
 var rolename string
 
+
 // Command config.
 var Command = &cobra.Command{
 	Use:              "createrole",
@@ -64,6 +65,8 @@ func run(c *cobra.Command, args []string) error {
 	return r.RInit()
 
 }
+
+
 /*
 func run(c *cobra.Command, args []string) error {
 	if err := root.Prepare(c, args); err != nil {

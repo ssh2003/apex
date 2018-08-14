@@ -13,7 +13,6 @@ import (
 	"github.com/ssh2003/apex/dryrun"
 	"github.com/ssh2003/apex/project"
 	"github.com/ssh2003/apex/utils"
-	"fmt"
 )
 
 // environment for project.
@@ -77,8 +76,8 @@ func init() {
 	f.StringVarP(&iamrole, "iamrole", "i", "", "AWS iamrole")
 	f.StringVarP(&region, "region", "r", "", "AWS region")
 	f.StringVar(&endpoint, "endpoint", "", "AWS endpoint")
-	f.StringVarP(&rolename, "rolename", "R", "", "Add rolename")
-	fmt.Println(rolename)
+	//f.StringVarP(&rolename, "rolename", "R", "", "Add rolename")
+	//fmt.Println(rolename)
 }
 
 // PreRunNoop noop for other commands.
