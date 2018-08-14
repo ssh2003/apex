@@ -7,11 +7,10 @@ import (
 	"github.com/tj/cobra"
 	"github.com/aws/aws-sdk-go/service/iam"
 
-  "github.com/ssh2003/apex/roleinit"
+	"github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
 
 	"fmt"
-	"os"
 )
 
 var credentialsError = `
@@ -44,11 +43,11 @@ func init() {
 	//var tmpRoleNames []string
 	f.StringSliceVarP(&roleName, "rolename", "R", nil, "Role name to create")
 	//roleName = tmpRoleNames[0]
-	fmt.Println(len(roleName[0]))
-	if len(roleName[0]) < 1 {
-		fmt.Println("Need a name of Role")
-		os.Exit(1)
-	}
+	fmt.Println(roleName)
+	//if len(roleName[0]) < 1 {
+	//	fmt.Println("Need a name of Role")
+	//	os.Exit(1)
+	//}
 }
 
 // Run command.
