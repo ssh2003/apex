@@ -40,11 +40,9 @@ var Command = &cobra.Command{
 func init() {
 	root.Register(Command)
 	f := Command.Flags()
-	//var tmpRoleNames []string
 	f.StringSliceVarP(&roleName, "rolename", "R", nil, "Role name to create")
-	//roleName = tmpRoleNames[0]
 	fmt.Println(roleName)
-	//if len(roleName[0]) < 1 {
+	//if len(roleName) < 1 {
 	//	fmt.Println("Need a name of Role")
 	//	os.Exit(1)
 	//}
