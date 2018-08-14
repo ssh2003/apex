@@ -7,7 +7,7 @@ import (
 	"github.com/tj/cobra"
 	"github.com/aws/aws-sdk-go/service/iam"
 
-  "github.com/ssh2003/apex/boot"
+  "github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
 
 )
@@ -30,7 +30,7 @@ var Command = &cobra.Command{
 	Use:              "createrole",
 	Short:            "Create base role for lambda function",
 	PersistentPreRun: root.PreRunNoop,
-	Run:              run,
+	RunE:              run,
 }
 
 // Initialize.
@@ -39,7 +39,7 @@ func init() {
 }
 
 // Run command.
-/*func run(c *cobra.Command, args []string) error {
+func run(c *cobra.Command, args []string) error {
 	if err := root.Prepare(c, args); err != nil {
 		return err
 	}
@@ -55,8 +55,8 @@ func init() {
 	}
 	return r.RInit()
 
-}*/
-
+}
+/*
 func run(c *cobra.Command, args []string) error {
 	if err := root.Prepare(c, args); err != nil {
 		return err
@@ -74,3 +74,4 @@ func run(c *cobra.Command, args []string) error {
 
 	return b.Boot()
 }
+*/
