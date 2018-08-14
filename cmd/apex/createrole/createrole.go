@@ -28,7 +28,7 @@ func init() {
 }
 
 // Run command.
-func run(c *cobra.Command, args []string) {
+func run(c *cobra.Command, args []string) error {
 	if err := root.Prepare(c, args); err != nil {
 		return err
 	}
