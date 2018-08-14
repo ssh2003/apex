@@ -6,42 +6,10 @@ import (
 
 	"github.com/tj/cobra"
 
+  "github.com/ssh2003/apex/roleinit"
 	"github.com/ssh2003/apex/cmd/apex/root"
 
-	//"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/service/iam"
-	//"github.com/aws/aws-sdk-go/service/iam/iamiface"
-
 )
-/*
-var iamAssumeRolePolicy = `{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}`
-
-var iamLogsPolicy = `{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "logs:*"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    }
-  ]
-}`
-*/
-
-
 
 
 
@@ -60,7 +28,19 @@ func init() {
 
 // Run command.
 func run(c *cobra.Command, args []string) {
-	fmt.Println("Create Role")
-	svc := iam.New()
-	fmt.Println(svc)
+	if err := root.Prepare(c, args); err != nil {
+		return err
+	}
+
+	region := root.Config.Region
+	if region == nil {
+		return errors.New(credentialsError)
+	}
+
+	r := roleinit.RoleInit{
+		IAM:    iam.New(root.Session),
+		Region: *region,
+	}
+	r.RInit()
+
 }
