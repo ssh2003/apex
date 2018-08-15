@@ -44,7 +44,7 @@ var iamLogsPolicy = `{
 }`
 
 
-func (r *RoleInit) RInit(name string) error {
+func (r *RoleInit) RInit(name string) (string, error) {
 	fmt.Println("RInit")
 	fmt.Println(name)
 
