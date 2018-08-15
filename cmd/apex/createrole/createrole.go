@@ -46,9 +46,9 @@ func init() {
 }
 
 // Run command.
-func run(c *cobra.Command, args []string) (string, error) {
+func run(c *cobra.Command, args []string) error {
 	if err := root.Prepare(c, args); err != nil {
-		return "", err
+		return err
 	}
 	//fmt.Println(roleName[0])
 
@@ -56,7 +56,7 @@ func run(c *cobra.Command, args []string) (string, error) {
 
 	region := root.Config.Region
 	if region == nil {
-		return "", errors.New(credentialsError)
+		return errors.New(credentialsError)
 	}
 
 	r := roleinit.RoleInit {

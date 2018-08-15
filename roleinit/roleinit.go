@@ -44,11 +44,12 @@ var iamLogsPolicy = `{
 }`
 
 
-func (r *RoleInit) RInit(name string) (string, error) {
+func (r *RoleInit) RInit(name string) error {
 	fmt.Println("RInit")
 	fmt.Println(name)
 
-	return r.createRole(name)
+	_, err := r.createRole(name)
+	return err
 }
 
 func (r *RoleInit) createRole(name string) (string, error) {
