@@ -53,8 +53,8 @@ func (r *RoleInit) RInit(name string) error {
 }
 
 func (r *RoleInit) createRole(name string) (string, error) {
-	roleName := fmt.Sprintf("%s_lambda_function", r.name)
-	policyName := fmt.Sprintf("%s_lambda_logs", r.name)
+	roleName := fmt.Sprintf("%s_lambda_function", name)
+	policyName := fmt.Sprintf("%s_lambda_logs", name)
 
 	logf("creating IAM %s role", roleName)
 	role, err := r.IAM.CreateRole(&iam.CreateRoleInput{
