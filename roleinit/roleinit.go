@@ -17,23 +17,80 @@ type RoleInit struct {
 	description string
 }
 
-func (r *RoleInit) RInit(rolename string) error {
+var iamAssumeRolePolicy = `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}`
+
+var iamLogsPolicy = `{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "logs:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}`
+
+
+func (r *RoleInit) RInit(name string) error {
 	fmt.Println("RInit")
-	fmt.Println(rolename)
-	result, err := r.IAM.ListUsers(&iam.ListUsersInput{
-        MaxItems: aws.Int64(10),
-    })
+	fmt.Println(name)
+
+	return r.createRole(name)
+}
+
+func (r *RoleInit) createRole() (string, error) {
+	roleName := fmt.Sprintf("%s_lambda_function", r.name)
+	policyName := fmt.Sprintf("%s_lambda_logs", r.name)
+
+	logf("creating IAM %s role", roleName)
+	role, err := r.IAM.CreateRole(&iam.CreateRoleInput{
+		RoleName:                 &roleName,
+		AssumeRolePolicyDocument: aws.String(iamAssumeRolePolicy),
+	})
+
 	if err != nil {
-	        fmt.Println("Error", err)
-	        return err
+		return "", fmt.Errorf("creating role: %s", err)
 	}
-	for i, user := range result.Users {
-        if user == nil {
-            continue
-        }
-        fmt.Printf("%d user %s created %v\n", i, *user.UserName, user.CreateDate)
-  }
-	return nil
+
+	logf("creating IAM %s policy", policyName)
+	policy, err := r.IAM.CreatePolicy(&iam.CreatePolicyInput{
+		PolicyName:     &policyName,
+		Description:    aws.String("Allow lambda_function to utilize CloudWatchLogs. Created by apex(1)."),
+		PolicyDocument: aws.String(iamLogsPolicy),
+	})
+
+	if err != nil {
+		return "", fmt.Errorf("creating policy: %s", err)
+	}
+
+	logf("attaching policy to lambda_function role.")
+	_, err = r.IAM.AttachRolePolicy(&iam.AttachRolePolicyInput{
+		RoleName:  &roleName,
+		PolicyArn: policy.Policy.Arn,
+	})
+
+	if err != nil {
+		return "", fmt.Errorf("creating policy: %s", err)
+	}
+
+	return *role.Role.Arn, nil
+}
+
+func logf(s string, v ...interface{}) {
+	fmt.Printf("  \033[34m[+]\033[0m %s\n", fmt.Sprintf(s, v...))
 }
 
 /*func (b *Bootstrapper) createRole() (string, error) {
