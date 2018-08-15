@@ -51,7 +51,7 @@ func (r *RoleInit) RInit(name string) (string, error) {
 	return r.createRole(name)
 }
 
-func (r *RoleInit) createRole() (string, error) {
+func (r *RoleInit) createRole(name string) (string, error) {
 	roleName := fmt.Sprintf("%s_lambda_function", r.name)
 	policyName := fmt.Sprintf("%s_lambda_logs", r.name)
 
